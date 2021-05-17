@@ -46,6 +46,11 @@ php artisan migrate
 php artisan db:seed
 ````
 
+- Rodar aplicação:
+```bash
+php artisan serve
+````
+
 Requisições da api feitos pelo Insomnia
 
 ### Sobre
