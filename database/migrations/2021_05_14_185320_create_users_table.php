@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->foreign('address_id')->references('id')->on('address');
             $table->string('name', 100);
             $table->string('phone', 14);
+            $table->string('email', 100);
+            $table->string('password', 100);
             $table->date('date', 100);
             $table->timestamps();
         });

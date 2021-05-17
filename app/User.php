@@ -8,11 +8,11 @@ class User extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['address_id','name', 'date', 'phone'];
+    protected $fillable = ['address_id','name', 'date', 'phone', 'email', 'password'];
 
     public static function getUsers ()
     {
-        $user = User::select('users.id','users.name', 'users.date', 'users.phone',
+        $user = User::select('users.id','users.name', 'users.date', 'users.phone', 'users.email',
                 'address.street', 'address.number','address.cep', 'states.uf',
                 'states.name as stateName','cities.name as cityName')
                 ->join('address','users.address_id','=','address.id')
@@ -25,7 +25,7 @@ class User extends Model
 
     public static function getUserbyId (int $id)
     {
-        $user = User::select('users.id','users.name', 'users.date', 'users.phone',
+        $user = User::select('users.id','users.name', 'users.date', 'users.phone', 'users.email',
                 'states.uf', 'address.street', 'address.number','address.cep',
                 'states.name as stateName','cities.name as cityName')
                 ->join('address','users.address_id','=','address.id')
