@@ -15,6 +15,11 @@ class StateController extends Controller
     public function index()
     {
         $states = State::all();
+
+        if(empty($states)) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
+
         return response()->json($states, 201);
     }
 
@@ -26,8 +31,13 @@ class StateController extends Controller
      */
     public function show(int $id)
     {
-        $states = State::find($id);
-        return response()->json($states, 201);
+        $state = State::find($id);
+
+        if(empty($state)) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
+
+        return response()->json($state, 201);
     }
 
 }

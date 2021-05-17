@@ -15,6 +15,10 @@ class AddressController extends Controller
     {
         $address = Address::with('state')->with('city')->get();
 
+        if(empty($address)) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
+
         return response()->json($address, 201);
     }
 
@@ -27,6 +31,10 @@ class AddressController extends Controller
     public function show(int $id)
     {
         $address = Address::with('state')->with('city')->where('id', $id)->first();
+
+        if(empty($address)) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
 
         return response()->json($address, 201);
     }

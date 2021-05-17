@@ -16,6 +16,10 @@ class UserController extends Controller
     {
         $users = User::getUsers();
 
+        if(count($users) < 1) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
+
         return response()->json($users, 201);
     }
 
@@ -27,10 +31,14 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $input = $this->mountFields($request->all());
+
         if($request->validated()) {
-            if(User::create($request->all())) {
-                return response()->json(['message' => 'Data saved successfully.'], 201);
+            if(!User::create($input)) {
+                return response()->json(['message' => 'error to save data.'], 203);
             }
+
+            return response()->json(['message' => 'Data saved successfully.'], 201);
         }
     }
 
@@ -44,6 +52,10 @@ class UserController extends Controller
     {
         $user = User::getUserbyId($id);
 
+        if(count($user) < 1) {
+            return response()->json(['message' => 'Data does not exist.'], 203);
+        }
+
         return response()->json($user, 201);
     }
 
@@ -56,9 +68,11 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, int $id)
     {
+        $input = $this->mountFields($request->all());
+
         if($request->validated()) {
-            if(!User::where('id', $id)->update($request->all())) {
-                return response()->json(['message' => 'Data does not exist.'], 201);
+            if(!User::where('id', $id)->update($input)) {
+                return response()->json(['message' => 'Data does not exist.'], 203);
             }
 
             return response()->json(['message' => 'Data updated successfully.'], 201);
@@ -75,7 +89,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if(empty($user)) {
-            return response()->json(['message' => 'No data to delete.'], 204);
+            return response()->json(['message' => 'No data to delete.'], 203);
         }
 
         if($user::destroy($id)) {
@@ -93,5 +107,19 @@ class UserController extends Controller
     {
         $users = User::getUsersByCity($city_id);
         return response()->json(['users' => $users], 201);
+    }
+
+    public function mountFields(array $request)
+    {
+        $input = array(
+            'name' => $request['name'] ?? '',
+            'address_id' => $request['address_id'] ?? '',
+            'date' => $request['date'] ?? '',
+            'phone' => $request['phone'] ?? '',
+            'email' => $request['email'] ?? '',
+            'password' => md5($request['password']) ?? ''
+        );
+
+        return $input;
     }
 }
