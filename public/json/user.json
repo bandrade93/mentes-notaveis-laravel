@@ -1,0 +1,8 @@
+{
+	"name" : "teste",
+	"phone" : "(11)98787-1111",
+	"address_id": 2,
+	"date": "1993-02-19",
+	"email": "teste@teste.com.br",
+	"password": "1234"
+}

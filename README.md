@@ -53,6 +53,25 @@ php artisan serve
 
 Requisições da api feitos pelo Insomnia
 
+- Requisições GET
+
+```bash
+http://127.0.0.1:8000/states
+http://127.0.0.1:8000/states/{id}
+http://127.0.0.1:8000/cities
+http://127.0.0.1:8000/cities/{id}
+http://127.0.0.1:8000/address
+http://127.0.0.1:8000/address/{id}
+http://127.0.0.1:8000/users
+http://127.0.0.1:8000/users/{id}
+```
+
+- Requisições PUT, PATCH, POST (Via insomnia), passar arquivo localizado na pasta public/json
+```bash
+http://127.0.0.1:8000/users
+http://127.0.0.1:8000/users/{id}
+```
+
 ### Sobre
 
 #### Requerimentos
@@ -86,4 +105,7 @@ database/
     ├── AddressSeeder.php
     ├── CitySeeder.php
     └── StateSeeder.php
+public/
+├── json
+└── └── user.json
 ```
