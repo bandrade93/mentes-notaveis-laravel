@@ -8,16 +8,11 @@ class Address extends Model
 {
     protected $table = 'address';
     protected $primaryKey = 'id';
-    protected $fillable = ['state_id','city_id', 'street', 'number', 'cep'];
-
-    public function state ()
-    {
-        return $this->hasMany('App\State', 'id', 'state_id');
-    }
+    protected $fillable = ['city_id', 'street', 'number', 'cep'];
 
     public function city ()
     {
-        return $this->hasMany('App\City', 'id', 'city_id');
+        return $this->belongsTo('App\City');
     }
 
 }
