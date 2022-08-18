@@ -18,6 +18,7 @@ class StateResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'uf' => $this->uf,
+            'active_text' => $this->active_text
         ];
     }
 }
