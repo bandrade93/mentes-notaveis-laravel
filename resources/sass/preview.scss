@@ -1,0 +1,45 @@
+.stage {
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	display: none;
+	z-index: 1050;
+	opacity: 0.0;
+	transition: 0.3s ease;
+
+	&.on {
+		display: flex;
+		opacity: 1.0;
+	}
+
+	.bt-close {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.3));
+		transition: 0.3s;
+		right: 5px; top: 5px;
+		z-index: 1;
+		cursor: pointer;
+		display: none;
+		opacity: 0.0;
+
+		&.on {
+			display: flex;
+			opacity: 1.0;
+		}
+
+		&:hover {
+			filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.5)) brightness(1.1);
+		}
+
+		&:active {
+			filter: none;
+			margin-top: 2px;
+		}
+	}
+}

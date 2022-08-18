@@ -19,6 +19,7 @@ class CreateCitiesTable extends Migration
             $table->foreign('state_id')->references('id')->on('states');
             $table->string('name', 100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

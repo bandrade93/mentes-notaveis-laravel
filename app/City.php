@@ -2,11 +2,21 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    protected $fillable = ['state_id','name'];
+    use SoftDeletes;
+
+    protected $fillable = ['state_id', 'name', 'active'];
+
+    protected $appends = ['active_text'];
+
+    public function getActiveTextAttribute()
+    {
+    	return ($this->active) ? 'Ativo' : 'Inativo';
+    }
 
     public function state ()
     {

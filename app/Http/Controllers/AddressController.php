@@ -21,8 +21,7 @@ class AddressController extends Controller
     public function show(int $id)
     {
         $address = Address::with('city.state')
-            ->where('id', $id)
-            ->first();
+            ->find($id);
 
         if(!$address) {
             return response(['message' => 'Data does not exist.'], 203);

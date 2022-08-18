@@ -1,0 +1,53 @@
+.login-form input[name="login"],
+.login-form input[type="text"],
+.login-form input[type="email"] {
+  margin-bottom: -2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.login-form input[name="password"],
+.login-form input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.login-form .login-input {
+  border-radius: 0;
+}
+
+.login-form input:focus {
+  border:2px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.login-form .g-recaptcha, .forget-form .g-recaptcha {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.bt {
+  margin: 10px 0 10px 0;
+}
+
+@media (max-width: 576px) {
+  .login-box .jn-col {
+    width: 50%;
+  }
+}
+
+@media (max-width: 359px) {
+  .login-form .g-recaptcha {
+    transform: scale(.8);
+    margin-left: -12px;
+  }
+}
+
+.login-box-password {
+  min-height: 320px !important;
+}
+
+.login-box-recover {
+  min-height: 250px !important;
+}

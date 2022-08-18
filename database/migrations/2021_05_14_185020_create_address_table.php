@@ -21,6 +21,7 @@ class CreateAddressTable extends Migration
             $table->integer('number');
             $table->string('cep', 9);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

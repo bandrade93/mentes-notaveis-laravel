@@ -12,3 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/menus', 'MenuController@index');
+
+Route::get('states/getStates', 'StateController@list');
+Route::get('cities/getCitiesByState/{state_id}', 'CityController@list');
+
+Route::resources([
+    'states' => 'StateController',
+    'cities' => 'CityController',
+    'users' => 'UserController',
+]);
+
+Route::patch('{controller}/enableMulti', 'Controller@enableMulti');
+Route::patch('{controller}/disableMulti', 'Controller@disableMulti');
+Route::patch('{controller}/deleteMulti', 'Controller@deleteMulti');
