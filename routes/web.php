@@ -27,3 +27,5 @@ Route::resources([
 Route::patch('{controller}/enableMulti', 'Controller@enableMulti');
 Route::patch('{controller}/disableMulti', 'Controller@disableMulti');
 Route::patch('{controller}/deleteMulti', 'Controller@deleteMulti');
+
+Route::get('/', 'UserController@index');
